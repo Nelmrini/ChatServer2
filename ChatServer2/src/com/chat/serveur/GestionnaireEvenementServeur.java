@@ -35,7 +35,7 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
     public void traiter(Evenement evenement) {
         Object source = evenement.getSource();
         Connexion cnx, cnx2;
-        String msg, typeEvenement, aliasExpediteur, aliasDestinataire, str, s1, s2;
+        String msg, msg2, typeEvenement, aliasExpediteur, aliasDestinataire, str, s1, s2;
         String hote, invite;
         ServeurChat serveurChat = (ServeurChat) this.serveur;
         SalonPrive sp;
@@ -101,7 +101,9 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
                         cnx2.envoyer("DECLINE "+aliasExpediteur);
                     }
                     else if (serveurChat.supprimeInvitationEchecs(aliasDestinataire,aliasExpediteur))
-                        cnx2.envoyer("DECLINE_CHESS "+aliasExpediteur);
+                        cnx.envoyer("DECLINE_CHESS "+aliasDestinataire);
+
+
                     break;
                 case "INV" :  //envoyer liste des invitations reçues
                     cnx.envoyer("INV " + serveurChat.listInvitations(cnx.getAlias()));
