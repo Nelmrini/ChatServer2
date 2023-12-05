@@ -154,12 +154,13 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
                                     cnx.envoyer("CHESSOK "+aliasDestinataire+" "+partie.getCouleurJoueur1());
                                     cnx2 = serveurChat.getConnexionParAlias(aliasDestinataire);
                                     cnx2.envoyer("CHESSOK "+aliasExpediteur+" "+partie.getCouleurJoueur2());
-                                    sp.supprimeInvitationAuxEchecs();
+                                    serveurChat.supprimeInvitationEchecs(aliasDestinataire,aliasExpediteur);
                                 }
                                 else {
                                     cnx.envoyer("CHESSOK "+aliasDestinataire+" "+partie.getCouleurJoueur2());
                                     cnx2 = serveurChat.getConnexionParAlias(aliasDestinataire);
                                     cnx2.envoyer("CHESSOK "+aliasExpediteur+" "+partie.getCouleurJoueur1());
+                                    serveurChat.supprimeInvitationEchecs(aliasExpediteur,aliasDestinataire);
                                 }
                             }
                             else {
