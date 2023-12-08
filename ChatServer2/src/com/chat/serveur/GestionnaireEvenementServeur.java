@@ -214,6 +214,7 @@ public class GestionnaireEvenementServeur implements GestionnaireEvenement {
                         cnx2 = serveurChat.getConnexionParAlias(aliasDestinataire);
                         if (cnx2!=null) //être sûr que l'autre joueur n'est pas parti.
                             cnx2.envoyer("ABANDON "+aliasExpediteur);
+                            cnx.envoyer("ABANDON2 "+aliasDestinataire);
                         cnx.envoyer("Vous avez abandonné la partie. "+aliasDestinataire+" a gagné.");
                         sp = serveurChat.getSalonPrive(aliasExpediteur,aliasDestinataire);
                         if (sp!=null)
